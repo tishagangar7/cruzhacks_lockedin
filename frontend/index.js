@@ -2,6 +2,9 @@ const rejectButton = document.querySelector(".reject")
 const tile = document.querySelector(".tile");
 const acceptButton = document.querySelector(".accept");
 
+function reloadText(){
+    document.query
+}
 
 function createNewTile() {
     const newTile = document.createElement("div");
@@ -26,6 +29,8 @@ function createNewTile() {
             <button class="accept"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Green_check.svg/600px-Green_check.svg.png"></button>
         </div>
     `;
+
+    
 
     tileBox = document.querySelector(".tilebox");
     tileBox.appendChild(newTile);
