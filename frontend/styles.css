@@ -1,6 +1,9 @@
 body{
-    background-color: #e7e7e7;
     font-family: "Manrope", "Outfit", sans-serif;
+    margin: 0;
+    height: 100%;
+
+    background: linear-gradient(135deg, rgba(0, 0, 0, 1) 0%, rgba(78, 159, 61, 1) 50%, rgba(216, 233, 168, 1) 110%);
 }
 
 img {
@@ -18,6 +21,8 @@ img {
     border-radius: 10px;
     overflow:hidden;
     object-fit: cover;
+
+
 }
 
 .tilebox{
@@ -25,20 +30,23 @@ img {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    width: 50%;
 }
 
 .tile{
-    width:35%;
+    width:30%;
+    min-width: 30vw;
     height:70vh;
     flex-direction: column;
-    padding: 50px;
-    background-color: #ececec;
+    padding: 30px;
+    background-color: #dbdbdb;
     margin: 10px;
     border: 3px dotted #cacaca;
     perspective: 1000px;
     box-shadow: 0px 0px 7px #676767;
     color: #01204E;
-    border-radius: 2%;
+    border-radius: 1%;
+    margin-bottom: 50px;
 }
 
 .tileinfo {
@@ -105,13 +113,12 @@ img {
 }
 
 #tilepic{
-    border: 1px solid black;
     height: 100%;
     width: 100%;
     object-fit: cover;
     display:block;
     
-    border-radius: 5px;
+    border-radius: 20px;
 }
 
 .buttons{
@@ -129,8 +136,8 @@ img {
 
 .reject img{
     border-radius: 100%;
-    width: 75px;
-    height: 75px;  
+    width: 50px;
+    height: 50px;  
     border: none;
     
     background-color: #ecebe900;
@@ -147,8 +154,8 @@ img {
 }
 .accept img{
     border-radius: 100%;
-    width: 75px;
-    height: 75px;  
+    width: 50px;
+    height: 50px;  
     border: none;
     background-color: #ecebe900;
 }
@@ -160,7 +167,17 @@ img {
 
 
 #mygroups{
-    border: 1px solid #001e5e;
+    height: 40px;
+    width: 20%;
+    margin: 10px;
+    background-color: #01204e00;
+    color: white;
+    border-radius: 10px;
+
+    border: none;
+    font-size: 15px;
+
+    font-family: "Manrope";
 }
 
 #profile{
@@ -170,12 +187,46 @@ img {
     border-radius: 50%;
     width: 50px;
     height: 50px;
-
+    
 }
 
-.top-right-buttons{
+.top-buttons{
     width: 100%;
     display:flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.top-right{
+    display:flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+}
+
+.top-right a{
+    
+    color:#ededed;
+    text-decoration: none;
+}
+
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 15px;
+    color: white;
+    margin: 0px;
+}
+
+main{
+    display:flex;
+}
+
+.info{
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 40px;
 }
