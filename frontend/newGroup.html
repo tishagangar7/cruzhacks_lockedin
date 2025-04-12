@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LockedIn - New Group</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="newGroup.css" />
+</head>
+<body>
+  <header>
+    <img id="logo" src="../pictures/lockedResized.png" alt="LockedIn Logo" />
+  </header>
+
+  <form id="login-form" style="border:none">
+    <div class="container">
+        <header1>
+            <h2>Create a group</h2> 
+    
+          </header1>
+      <hr>
+
+      <label for="class"><b>Class</b></label>
+      <input type="text" id="classname" name="class" placeholder="Enter the CLASS you want to study for" required>
+
+      <label for="Location"><b>Location</b></label>
+      <input type="text" id="location" name="loc" placeholder="Enter WHERE you want to study" required>
+
+      <label for="Topics"><b>Topics</b></label>
+      <input type="text" id="topics" name="topics" placeholder="Enter WHAT TOPICS you want to study" required>
+
+      <label for="time"><b>Time</b></label>
+      <!-- <input type="text" id="time" name="time" placeholder="Enter WHEN you want to study" required> -->
+
+      <div class="container1">
+        <button class="button1">8am-11pm</button>
+      <button class="button1">11pm-2pm</button>
+      <button class="button1">2pm-5pm</button>
+      <button class="button1">5pm-8pm</button>
+      <button class="button1">8pm-11pm</button>
+
+      
+
+      </div>
+
+      
+      
+
+
+
+      <!-- <label>
+        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+      </label> -->
+
+      <!-- <p>Don't have an account? <a href="signUp.html" style="color:dodgerblue">Register now!</a></p> -->
+
+      <p id="login-message" style="color:red; text-align:center;"></p>
+
+      <div class="clearfix">
+        <button type="submit" class="signupbtn">Create Group</button>
+      </div>
+    </div>
+  </form>
+
+  <script src="newGroup.js"></script>
+</body>
+</html>

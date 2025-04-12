@@ -1,0 +1,105 @@
+* {box-sizing: border-box}
+
+body {font-family: "Manrope", "Outfit", sans-serif;}
+
+
+/* Full-width input fields */
+
+img {
+  max-height: 300px;
+  max-width: 300px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+} 
+
+header1 {
+  text-align: center;
+  padding-top: .5;
+  padding-bottom: .5px;
+  
+}
+
+/* hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+} */
+
+/* Set a style for all buttons */
+/* button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+} */
+
+a:link, a:visited {
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    margin: 0 auto; /* Centers the button */
+
+  }
+  
+  a:hover, a:active {
+    background-color: #7ed957;
+  }
+
+button:hover {
+  opacity:1;
+}
+
+/* Extra styles for the cancel button */
+/* .cancelbtn {
+  padding: 14px 20px;
+  background-color: #f44336;
+} */
+
+/* Float cancel and signup buttons and add an equal width */
+ .button {
+    display: block;
+    float: center;
+    width: 40%;
+    text-align: center;
+    margin-left: auto;
+  margin-right: auto;
+  float: center;    
+}
+
+/* Add padding to container elements */
+.container {
+  padding: 16px;
+  border: 2px solid #f1f1f1; /*Change the border width (e.g., 2px) to make it narrower */
+  width: 60%; /* Optional: adjust the container width */
+  max-width: 700px; /* Ensures it's not too wide */
+  margin: 0 auto; /* Center the box */
+  margin-top: 70 px;
+  border-radius: 5%;
+  justify-content: center;
+  display: box;
+  float: center;    
+
+  
+
+}
+
+/* Clear floats */
+/* .clearfix::after {
+  
+  display: table;
+} */
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+  .addgroup {
+    width: 50%;
+  }
+}
