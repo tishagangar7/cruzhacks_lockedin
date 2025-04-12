@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LockedIn - Log In</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+  <header>
+    <img id="logo" src="logo.png" alt="LockedIn Logo" />
+  </header>
+
+  <form id="login-form" style="border:none">
+    <div class="container">
+      <header1><h1>Log In</h1></header1>
+      <hr>
+
+      <label for="email"><b>Email</b></label>
+      <input type="text" id="email" name="email" placeholder="Enter Email" required>
+
+      <label for="password"><b>Password</b></label>
+      <input type="password" id="password" name="psw" placeholder="Enter Password" required>
+
+      <label>
+        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+      </label>
+
+      <p>Don't have an account? <a href="signUp.html" style="color:dodgerblue">Register now!</a></p>
+
+      <p id="login-message" style="color:red; text-align:center;"></p>
+
+      <div class="clearfix">
+        <button type="submit" class="signupbtn">Log In</button>
+      </div>
+    </div>
+  </form>
+
+  <script src="login.js"></script>
+</body>
+</html>
