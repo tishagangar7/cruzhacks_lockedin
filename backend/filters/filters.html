@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Filters Panel</title>
+  <link rel="stylesheet" href="filters.css">
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+  <div id="filtersPanel" class="hidden">
+    <h2>Study Group Filters</h2>
+
+    <ul class="filter-list">
+      <!-- Class Filter -->
+      <li>
+        <span>📍 Class</span>
+        <!-- <button class="add-btn" onclick="showDropdown('classFilter')">➕</button> -->
+        <select id="classFilter" class="hidden filter-control">
+          <!-- Classes will be dynamically populated -->
+          <option value="" >Select a class...</option>
+          <option value="">CSE12</option>
+          <option value="">CSE16</option>
+          <option value="">CSE30</option>
+          <option value="">AM30</option>
+
+        </select>
+      </li>
+
+      <!-- Mode Filter -->
+      <li>
+        <span>🚪 Mode</span>
+        <!-- <button class="add-btn" onclick="showDropdown('modeFilter')">➕</button> -->
+        <select id="modeFilter" class="hidden filter-control" onchange="handleModeChange()">
+          <option value="remote">Remote (Zoom)</option>
+          <option value="in_person">In Person (Library)</option>
+        </select>
+        <div id="studySpacesContainer" class="hidden">
+          <label for="studySpaces">Select Study Spaces:</label>
+          <select id="studySpaces" class="filter-control" multiple>
+            <option value="mchenry_library">McHenry Library</option>
+            <option value="stevenson_coffeehouse">Stevenson Coffeehouse</option>
+            <option value="science_engineering_library">Science and Engineering Library</option>
+            <option value="jacks_lounge">Jack's Lounge</option>
+            <option value="recreation_lounge">Recreation Lounge</option>
+          </select>
+        </div>
+      </li>
+
+      <!-- Schedule Filter -->
+      <li>
+        <span>⏰ Schedule</span>
+        <button class="add-btn" onclick="goToSchedule()">➕</button>
+      </li>
+
+      <!-- Topics Filter -->
+      <li>
+        <span>📚 Topics</span>
+        <!-- <button class="add-btn" onclick="showTopicInput()">➕</button> -->
+        <input type="file" id="syllabusUpload" class="hidden filter-control">
+        <textarea id="topicTextInput" class="hidden filter-control" placeholder="or paste your syllabus text..."></textarea>
+        <button id="extractBtn" class="hidden" onclick="extractTopics()">Extract Topics</button>
+        <div id="topic-options"></div>
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    const filtersPanel = document.getElementById("filtersPanel");
+    document.getElementById("showFiltersBtn").addEventListener("click", () => {
+      filtersPanel.classList.toggle("hidden");
+    });
+
+    function showDropdown(id) {
+      const el = document.getElementById(id);
+      el.classList.toggle("hidden");
+    }
+
+    function goToSchedule() {
+      window.location.href = "schedule.html";
+    }
+
+    function showTopicInput() {
+      document.getElementById("syllabusUpload").classList.remove("hidden");
+      document.getElementById("topicTextInput").classList.remove("hidden");
+      document.getElementById("extractBtn").classList.remove("hidden");
+    }
+
+    function extractTopics() {
+      const textarea = document.getElementById("topicTextInput");
+      const topics = textarea.value.split(',').map(t => t.trim()).filter(Boolean);
+      const container = document.getElementById("topic-options");
+      container.innerHTML = "";
+
+      topics.forEach(topic => {
+        const tag = document.createElement("div");
+        tag.className = "topic-tag";
+        tag.textContent = topic;
+        container.appendChild(tag);
+      });
+    }
+
+    // Dynamically populate classes dropdown from user profile
+    async function populateClasses() {
+      try {
+        const response = await fetch('/api/get-user-classes'); // Backend endpoint to fetch user classes
+        const data = await response.json();
+        if (data.success) {
+          const classFilter = document.getElementById("classFilter");
+          classFilter.innerHTML = ""; // Clear existing options
+          data.classes.forEach(classCode => {
+            const option = document.createElement("option");
+            option.value = classCode;
+            option.textContent = classCode;
+            classFilter.appendChild(option);
+          });
+        } else {
+          console.error("Failed to fetch classes:", data.message);
+        }
+      } catch (error) {
+        console.error("Error fetching classes:", error);
+      }
+    }
+
+    // Handle mode change to show study spaces for "In Person"
+    function handleModeChange() {
+      const modeFilter = document.getElementById("modeFilter");
+      const studySpacesContainer = document.getElementById("studySpacesContainer");
+      if (modeFilter.value === "in_person") {
+        studySpacesContainer.classList.remove("hidden");
+      } else {
+        studySpacesContainer.classList.add("hidden");
+      }
+    }
+
+    // Call populateClasses on page load
+    document.addEventListener("DOMContentLoaded", populateClasses);
+  </script>
+</body>
+</html>
