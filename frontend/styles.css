@@ -60,10 +60,10 @@ img {
     flex-direction: column;
     
 }
-
+/* 
 .tileinfo:hover{
     transform: rotateY(180deg);
-}
+} */
 
 .tileinfofront{
     position:relative;
