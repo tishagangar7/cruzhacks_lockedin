@@ -27,3 +27,5 @@ async function applyFilters() {
       alert("An error occurred while applying filters.");
     }
   }
+
+meetingMode = document.getElementById("modeFilter").value;

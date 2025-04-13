@@ -40,22 +40,23 @@
           <option value="remote">Remote (Zoom)</option>
           <option value="in_person">In Person (Library)</option>
         </select>
-        <div id="studySpacesContainer" class="hidden">
-          <label for="studySpaces">Select Study Spaces:</label>
-          <select id="studySpaces" class="filter-control" multiple>
+      </li>
+
+      <li>
+          <label for="studySpaces">🏠 Select Study Spaces:</label>
+          <select id="studySpaces" class="hidden filter-control">
             <option value="mchenry_library">McHenry Library</option>
             <option value="stevenson_coffeehouse">Stevenson Coffeehouse</option>
             <option value="science_engineering_library">Science and Engineering Library</option>
             <option value="jacks_lounge">Jack's Lounge</option>
             <option value="recreation_lounge">Recreation Lounge</option>
           </select>
-        </div>
       </li>
 
       <!-- Schedule Filter -->
       <li>
         <span>⏰ Schedule</span>
-        <button class="add-btn" onclick="goToSchedule()">➕</button>
+        <button class="add-btn" onclick="goToSchedule()">Add Schedule</button>
       </li>
 
       <!-- Topics Filter -->
