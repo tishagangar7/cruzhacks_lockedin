@@ -3,7 +3,7 @@ import random
 import json
 from datetime import datetime
 
-# Same data pools as before
+# Data pools
 class_codes = ["CS101", "BIO20", "MATH23", "PHYS2B", "HIST10", "CHEM1A", "STAT5", "PHIL3", "ECON100A"]
 subject_titles = {
     "CS101": "Data Structures",
@@ -32,6 +32,26 @@ locations_in_person = ["McHenry Library", "Science and Engineering Library", "Ja
 study_styles = ["Quiet", "Discussion", "Problem-Solving", "Flashcards", "Teaching Each Other"]
 modes = ["remote", "in_person"]
 
+# Create the study_groups table
+def create_study_groups_table(conn):
+    cursor = conn.cursor()
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS study_groups (
+            group_id TEXT PRIMARY KEY,
+            class_code TEXT,
+            subject_title TEXT,
+            topics TEXT, -- JSON-encoded list of topics
+            time_blocks TEXT, -- JSON-encoded list of time slots
+            mode TEXT, -- "remote" or "in_person"
+            location TEXT,
+            group_size TEXT, -- e.g., "3/6"
+            study_style TEXT,
+            description TEXT
+        )
+    """)
+    conn.commit()
+
+# Generate and insert a study group
 def generate_and_insert_group(conn, index):
     cursor = conn.cursor()
     class_code = random.choice(class_codes)
@@ -61,4 +81,9 @@ def generate_and_insert_group(conn, index):
     conn.commit()
     print(f"[{datetime.now().strftime('%H:%M:%S')}] Inserted group {group_id}")
 
-    cursor.execute("""SELECT * FROM StudyGroups;""")
+# Main script
+conn = sqlite3.connect("study_groups.db")
+create_study_groups_table(conn)  # Ensure the table exists
+for i in range(10):  # Generate 10 random groups
+    generate_and_insert_group(conn, i)
+conn.close()

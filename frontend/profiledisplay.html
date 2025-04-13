@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
     <link rel="stylesheet" href="profiledisplay.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <header>
@@ -36,12 +41,12 @@
             <div class="row">
               <div class="column">
                 <!-- <h2>Column 1</h2> -->
-                <h3>Name:</h3>
-                <h3>Email:</h3>
-                <h3>Major:</h3>
-                <h3>Year:</h3>
-                <h3>Classes:</h3>
-                <h3>Bio:</h3>
+<h3>Name: Jane Smith</h3>
+<h3>Email: abcdef@gmail.com</h3>
+<h3>Major: Mathematics</h3>
+<h3>Year: 3</h3>
+<h3>Classes: MATH101 MATH102</h3>
+<h3>Bio: Auditory</h3>
                 <br>
                 <br>
                 <br>
@@ -49,7 +54,7 @@
               </div>
               <div class="column">
                 <!-- <h2>Column 2</h2> -->
-                <img id="profilepic" src="../pictures/profpic.jpg" alt="Profile Picture">
+                <img id="profilepic" src="https://www.freeiconspng.com/thumbs/profile-icon-png/profile-icon-9.png" alt="Profile Picture">
                 <div class="container1">
                     <!-- <button type="button" class="butt" id = "edit">Edit</button> -->
                     <button type="button" class="butt" id = "logout"> Log Out</button>
@@ -80,5 +85,21 @@
        
         
     <script src="profiledisplay.js" ></script>
+    <script>
+        document.getElementById('mygroups').addEventListener('click', () => {
+            window.location.href = 'myGroups.html'; // Redirect to profiledisplay.html in the same tab
+        });
+
+
+        document.getElementById('edit').addEventListener('click', () => {
+            window.location.href = 'newGroup.html'; // Redirect to myGroups.html in the same tab
+        });
+
+        // profile button
+
+        document.getElementById('logout').addEventListener('click', () => {
+            window.location.href = 'logIn.html'; // Redirect to profiledisplay.html in the same tab
+        });
+    </script>
 </body>
 </html>
