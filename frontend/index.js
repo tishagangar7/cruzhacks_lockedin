@@ -1,5 +1,3 @@
-
-
 const rejectButton = document.querySelector(".reject")
 const tile = document.querySelector(".tile");
 const acceptButton = document.querySelector(".accept");
@@ -7,17 +5,24 @@ const acceptButton = document.querySelector(".accept");
 function reloadText(){
     document.query
 }
+var count = 0;
+
+picsList = ["../tilepics/baskin.jpg", "../tilepics/mchenry.jpg", "../tilepics/mchenry1.jpeg", "../tilepics/sne.jpg", "../tilepics/spaces-mchenry.jpg"]
+
+classesList = ["CSE30", "AM20", "CSE12", "CSE100", "CSE110"]
 
 function createNewTile() {
     const newTile = document.createElement("div");
 
     newTile.classList.add("tile");
 
+    const tilePic = picsList[Math.floor(Math.random() * picsList.length)];
+
     newTile.innerHTML = 
         `<div class="tileinfo">
             <div class="tileinfofront">
                 <h2 id="groupname">CSE12 McHenry</h2>
-                <img id="tilepic" src="https://bora.co/wp-content/uploads/2015/12/bora_UCSC_McHenryLibrary_02.jpg">
+                <img id="tilepic" src="${tilePic}">
             </div>
             <div class="tileinfoback">
                 <h1>Info</h1>
