@@ -1,3 +1,5 @@
+
+
 const rejectButton = document.querySelector(".reject")
 const tile = document.querySelector(".tile");
 const acceptButton = document.querySelector(".accept");
