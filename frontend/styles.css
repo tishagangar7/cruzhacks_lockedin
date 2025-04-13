@@ -183,7 +183,7 @@ img {
 #mygroups:hover{
     background-color: dark green;
     cursor: pointer;
-    transition: background-color 0.5s ease-in-out;
+    /* transition: background-color 0.5s ease-in-out; */
 }
 
 #profile{
@@ -194,6 +194,11 @@ img {
     width: 50px;
     height: 50px;
     
+}
+
+#profile:hover{
+    cursor: pointer;
+    /* transition: background-color 0.5s ease-in-out; */
 }
 
 .top-buttons{

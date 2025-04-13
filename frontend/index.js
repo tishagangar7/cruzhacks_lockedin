@@ -116,3 +116,9 @@ acceptButton.addEventListener("click", () => {
 document.getElementById('mygroups').addEventListener('click', () => {
     window.location.href = 'myGroups.html'; // Redirect to myGroups.html in the same tab
 });
+
+// profile button
+
+document.getElementById('profile').addEventListener('click', () => {
+    window.location.href = 'profiledisplay.html'; // Redirect to profiledisplay.html in the same tab
+});
