@@ -1,0 +1,66 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8;
+    padding-top: 50px;
+  }
+  
+  .container {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 500px;
+    margin: auto;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin: 15px 0 5px;
+    font-weight: bold;
+  }
+  
+  input, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    background-color: #04AA6D;
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #039f65;
+  }
+  
+  #responseMsg {
+    margin-top: 15px;
+    text-align: center;
+    color: #333;
+  }
+  #classList input {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  #addClassBtn {
+    margin-bottom: 20px;
+    background-color: #04AA6D;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
