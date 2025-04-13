@@ -241,3 +241,21 @@ main{
     text-align: center;
     padding-top: 40px;
 }
+
+#filtersbox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+#filters{
+    min-width: 200px;
+    border-radius: 20px;
+    margin:50px;
+    padding:10px;
+    border:1px solid darkgray;
+    background-color: rgb(196, 196, 196);
+    font-family: "Manrope";
+}
