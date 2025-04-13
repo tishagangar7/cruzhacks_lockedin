@@ -110,3 +110,9 @@ acceptButton.addEventListener("click", () => {
         createNewTile();
     }, 500);
 });
+
+// my groups button
+
+document.getElementById('mygroups').addEventListener('click', () => {
+    window.location.href = 'myGroups.html'; // Redirect to myGroups.html in the same tab
+});
