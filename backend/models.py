@@ -18,12 +18,14 @@ class UserClass(db.Model):  # Optional: class mapping table
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     class_code = db.Column(db.String(50), nullable=False)
 
-class Preference(db.Model):
+class Filter(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    mode = db.Column(db.String(20))  # 'in-person', 'zoom', 'google meet'
-    available_times = db.Column(db.Text)  # maybe a JSON string of time blocks
-    selected_class = db.Column(db.String(100))
-    topics = db.Column(db.Text)  # comma-separated list or raw string
-    syllabus_keywords = db.Column(db.Text)  # (if extracted via AI)
+    user_id = db.Column(db.Integer, nullable=False)
+    schedule = db.Column(db.Text, nullable=True)  # JSON string for schedule
+    duration = db.Column(db.Integer, nullable=True)  # Duration of the time slots
 
+class Keyword(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, nullable=False)  # Link to the user
+    syllabus_name = db.Column(db.String(255), nullable=False)  # Name of the syllabus file
+    keyword = db.Column(db.String(255), nullable=False)  # Extracted keyword/topic
