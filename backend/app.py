@@ -38,6 +38,10 @@ with app.app_context():
 # db.init_app(app)
 
 #---signup/login routes---
+@app.route("/")
+def index():
+    return render_template("login.html")
+
 @app.route("/api/signup", methods=["POST"])
 def signup():
     data = request.get_json()
@@ -324,6 +328,47 @@ def get_user_classes():
         print(f"Error fetching user classes: {e}")
         return jsonify({"success": False, "message": str(e)}), 500
 
+@app.route("/api/filtered-groups", methods=["GET"])
+def get_filtered_groups():
+    try:
+        conn = sqlite3.connect("study_groups.db")
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM study_groups")
+        rows = cursor.fetchall()
+
+        groups = []
+        for row in rows:
+            location = row[6] or "Remote"
+            
+            # Choose image URL based on location
+            if "McHenry" in location:
+                image_url = "https://bora.co/wp-content/uploads/2015/12/bora_UCSC_McHenryLibrary_02.jpg"
+            elif "Science" in location:
+                image_url = "https://source.unsplash.com/400x300/?engineering,library"
+            elif "Jacks" in location:
+                image_url = "https://source.unsplash.com/400x300/?lounge,students"
+            elif row[5] == "remote":
+                image_url = "https://source.unsplash.com/400x300/?study,online"
+            else:
+                image_url = "https://source.unsplash.com/400x300/?books,students"
+
+            groups.append({
+                "group_id": row[0],
+                "class_code": row[1],
+                "subject_title": row[2],
+                "topics": json.loads(row[3]),
+                "time_blocks": json.loads(row[4]),
+                "mode": row[5],
+                "location": location,
+                "group_size": row[7],
+                "study_style": row[8],
+                "description": row[9],
+                "image_url": image_url
+            })
+
+        return jsonify(groups)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
     app.run(debug=True)
