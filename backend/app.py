@@ -35,7 +35,6 @@ with app.app_context():
 # db.init_app(app)
 
 #---signup/login routes---
-
 @app.route("/api/signup", methods=["POST"])
 def signup():
     data = request.get_json()
@@ -43,21 +42,23 @@ def signup():
     password = data.get("password")
 
     if not email or not password:
-        return jsonify({"success": False, "message": "Email and password required"}), 400
+        return jsonify({"success": False, "message": "Email and password are required"}), 400
 
+    # Check if the email already exists
     if User.query.filter_by(email=email).first():
-        return jsonify({"success": False, "message": "Email already exists!"}), 400
+        return jsonify({"success": False, "message": "Email already exists"}), 400
 
-    user = User(email=email, password=password)
+    # Create a new user
+    user = User(email=email, password=generate_password_hash(password))
     db.session.add(user)
     db.session.commit()
 
+    # Return success with the user_id
     return jsonify({
         "success": True,
-        "message": "Signup successful!",
-        "user_id": user.id  
+        "message": "Signup successful",
+        "user_id": user.id  # Include the user_id in the response
     })
-
 
 @app.route("/api/login", methods=["POST"])
 def login():
@@ -66,30 +67,25 @@ def login():
     password = data.get("password")
 
     user = User.query.filter_by(email=email).first()
-    if user and user.password == password:
-        return jsonify({"success": True, "message": "Login successful!", "user_id": user.id})
-
+    if user and check_password_hash(user.password, password):
+        return jsonify({"success": True, "message": "Login successful", "user_id": user.id})
     else:
         return jsonify({"success": False, "message": "Invalid email or password"}), 401
-
-
+    
 @app.route("/api/user/<int:user_id>", methods=["GET"])
 def get_user(user_id):
     user = User.query.get(user_id)
-    if not user:
+    if user:
+        return jsonify({
+            "success": True,
+            "user": {
+                "id": user.id,
+                "name": user.name,
+                "email": user.email
+            }
+        })
+    else:
         return jsonify({"success": False, "message": "User not found"}), 404
-
-    return jsonify({
-        "success": True,
-        "user": {
-            "id": user.id,
-            "name": user.name,
-            "major": user.major,
-            "year": user.year,
-            "study_style": user.study_style,
-            "classes": user.classes.split(",") if user.classes else []
-        }
-    })
 
 # -------------------- PROFILE ROUTES --------------------
 @app.route("/api/profile", methods=["POST"])
@@ -108,33 +104,9 @@ def update_profile():
     user.classes = ",".join(data.get("classes", []))  # Convert list to comma string
 
     db.session.commit()
-
-    # THIS IS WHAT YOU FORGOT:
     return jsonify({"success": True, "message": "Profile updated successfully!"})
 
-@app.route("/api/profile/upload-image/<int:user_id>", methods=["POST"])
-def upload_profile_image(user_id):
-    user = User.query.get(user_id)
-    if not user:
-        return jsonify({"success": False, "message": "User not found"}), 404
-
-    if "image" not in request.files:
-        return jsonify({"success": False, "message": "No file uploaded"}), 400
-
-    file = request.files["image"]
-    if file.filename == "":
-        return jsonify({"success": False, "message": "No selected file"}), 400
-
-    filename = secure_filename(file.filename)
-    filepath = os.path.join(app.config["UPLOAD_FOLDER"], filename)
-    file.save(filepath)
-
-    # Optionally store the filename in user DB
-    # user.profile_image = filename
-    # db.session.commit()
-
-    return jsonify({"success": True, "message": "Image uploaded successfully!"})
-
+# 
     # Save profile info...
 # Register the preferences blueprint
 # app.register_blueprint(preferences_bp, url_prefix='/preferences')
