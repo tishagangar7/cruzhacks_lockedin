@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Schedule Preferences</title>
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.17/main.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="schedule.css" />
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.17/index.global.min.js"></script>
+  </head>
+  <body>
+    <h1>Set Your Schedule Preferences</h1>
+    <div id="controls">
+      <label for="duration">Select Time Duration:</label>
+      <select id="duration">
+        <option value="1">1 Hour</option>
+        <option value="2">2 Hours</option>
+        <option value="3">3 Hours</option>
+      </select>
+    </div>
+    
+    <div id="calendar"></div>
+    
+    <div id="selected-slots">
+      <h2>Selected Time Slots</h2>
+      <ul id="slots-list"></ul>
+    </div>
+    
+    <!-- Move the submit button here -->
+    <div id="submit-container">
+      <button id="submit">Submit</button>
+    </div>
+    
+    <!-- Modal Backdrop -->
+    <div id="modal-backdrop" class="hidden"></div>
+    
+    <!-- Modal for Category Selection -->
+    <div id="category-modal" class="hidden">
+      <h2>Select Category</h2>
+      <button class="category-btn" data-category="works best">Works Best</button>
+      <button class="category-btn" data-category="works">Works</button>
+      <button class="category-btn" data-category="not preferred">Works but Not Preferred</button>
+      <button id="cancel-modal">Cancel</button>
+    </div>
+    <script src="schedule.js"></script>
+  </body>
+</html>
