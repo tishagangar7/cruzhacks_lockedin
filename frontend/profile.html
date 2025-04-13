@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Profile</title>
+  <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Create Your Profile</h1>
+    <form id="profileForm">
+      <input type="hidden" id="user_id" name="user_id">
+
+      <label for="name">Name:</label>
+      <input type="text" id="name" placeholder="Enter your name" required>
+
+      <label for="major">Major:</label>
+      <input type="text" id="major" placeholder="Enter your major">
+
+      <label for="year">Year:</label>
+      <input type="number" id="year" placeholder="Enter your year (1-5)" min="1" max="5" required>
+
+      <label for="study_style">Study Style:</label>
+      <select id="study_style">
+        <option value="">Select your study style</option>
+        <option value="Quiet">Quiet</option>
+        <option value="Discussion">Discussion</option>
+        <option value="study_group">Study Group</option>
+        <option value="Mixed">Mixed</option>
+      </select>
+
+      <label>Classes:</label>
+      <div id="classList"></div>
+      <button type="button" id="addClassBtn">Add Class</button>
+
+      <p id="responseMsg"></p>
+      <button type="submit">Submit Profile</button>
+    </form>
+  </div>
+  <script src="profile.js"></script>
+</body>
+</html>
