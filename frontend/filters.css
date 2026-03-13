@@ -1,0 +1,102 @@
+body {
+  font-family: "Manrope", "Outfit", sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0b0f0b 0%, #4e9f3d 50%, #d8e9a8 110%);
+  color: #1f1f1f;
+}
+
+.container {
+  max-width: 760px;
+  margin: 24px auto;
+  background: #f7f7f7;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
+h1 {
+  margin-top: 0;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  display: block;
+}
+
+input,
+select {
+  width: 100%;
+  border: 1px solid #d0d0d0;
+  border-radius: 8px;
+  padding: 10px;
+  box-sizing: border-box;
+  background: white;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+button {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+#applyBtn {
+  background: #4e9f3d;
+  color: #fff;
+}
+
+#resetBtn {
+  background: #d9d9d9;
+}
+
+#scheduleBtn {
+  background: #1f1f1f;
+  color: #fff;
+}
+
+#profileBtn {
+  background: #27548a;
+  color: #fff;
+}
+
+#results {
+  margin-top: 18px;
+}
+
+.group-card {
+  background: white;
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 10px;
+  border: 1px solid #ececec;
+}
+
+.group-card h3 {
+  margin: 0 0 8px;
+}
+
+.select-btn {
+  background: #4e9f3d;
+  color: #fff;
+}
+
+.select-btn.selected {
+  background: #b21e35;
+}

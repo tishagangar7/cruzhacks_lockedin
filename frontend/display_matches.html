@@ -1,0 +1,36 @@
+<div id="swipeContainer">
+    <!-- Matches will be dynamically added here -->
+  </div>
+  
+  <script>
+    async function fetchMatches() {
+      const response = await fetch('/api/match-users', {
+        method: 'GET',
+        credentials: 'include' // Include session cookie
+      });
+      const data = await response.json();
+  
+      if (data.success) {
+        const swipeContainer = document.getElementById('swipeContainer');
+        swipeContainer.innerHTML = ''; // Clear previous matches
+  
+        data.matches.forEach(match => {
+          const matchDiv = document.createElement('div');
+          matchDiv.className = 'match';
+          matchDiv.innerHTML = `
+            <h3>${match.name}</h3>
+            <p>Class: ${match.class_code}</p>
+            <p>Topics: ${match.topics}</p>
+            <p>Mode: ${match.mode}</p>
+            <p>Location: ${match.location}</p>
+          `;
+          swipeContainer.appendChild(matchDiv);
+        });
+      } else {
+        alert(data.message);
+      }
+    }
+  
+    // Fetch matches on page load
+    document.addEventListener('DOMContentLoaded', fetchMatches);
+  </script>

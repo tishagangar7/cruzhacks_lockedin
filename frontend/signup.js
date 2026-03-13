@@ -27,7 +27,7 @@
 //     messageEl.textContent = "An error occurred. Please try again.";
 //   }
 // });
-const API_BASE_URL = "http://127.0.0.1:5000";
+const API_BASE_URL = window.location.origin;
 
 document.getElementById("signup-form").addEventListener("submit", async (event) => {
   event.preventDefault();
@@ -40,6 +40,7 @@ document.getElementById("signup-form").addEventListener("submit", async (event) 
     const response = await fetch(`${API_BASE_URL}/api/signup`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
+      credentials: "include",
       body: JSON.stringify({ email, password }),
     });
 

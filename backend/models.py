@@ -1,4 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
 
 db = SQLAlchemy()
 
@@ -36,3 +37,22 @@ class StudyGroups(db.Model):
     location = db.Column(db.String(200), nullable=False)
     topics = db.Column(db.String(100), nullable=False)
     time = db.Column(db.String(50), nullable=False)
+
+
+class GroupSelection(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, nullable=False, index=True)
+    group_id = db.Column(db.Integer, nullable=False, index=True)
+    created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+
+
+class CreatedGroup(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, nullable=False, index=True)
+    class_code = db.Column(db.String(120), nullable=False)
+    location = db.Column(db.String(200), nullable=False)
+    topics = db.Column(db.Text, nullable=True)
+    time_block = db.Column(db.String(120), nullable=True)
+    mode = db.Column(db.String(40), nullable=True, default="in_person")
+    description = db.Column(db.Text, nullable=True)
+    created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)

@@ -1,17 +1,19 @@
-const API_BASE_URL = "http://127.0.0.1:5000";
+const API_BASE_URL = window.location.origin;
 
 document.getElementById("login-form").addEventListener("submit", async (event) => {
   event.preventDefault();
 
   const email = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value.trim();
+  const remember = document.querySelector('input[name="remember"]')?.checked ?? true;
   const messageEl = document.getElementById("login-message");
 
   try {
     const response = await fetch(`${API_BASE_URL}/api/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
+      credentials: "include",
+      body: JSON.stringify({ email, password, remember }),
     });
 
     const data = await response.json();

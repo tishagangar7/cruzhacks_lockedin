@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LockedIn Filters</title>
+  <link rel="stylesheet" href="filters.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Filter Study Groups</h1>
+    <div class="row">
+      <div>
+        <label for="classFilter">Class</label>
+        <select id="classFilter">
+          <option value="">Any class</option>
+        </select>
+      </div>
+      <div>
+        <label for="topicFilter">Topic</label>
+        <input id="topicFilter" type="text" placeholder="ex: recursion">
+      </div>
+    </div>
+
+    <div class="row">
+      <div>
+        <label for="modeFilter">Mode</label>
+        <select id="modeFilter">
+          <option value="">Any mode</option>
+          <option value="remote">Remote</option>
+          <option value="in_person">In Person</option>
+        </select>
+      </div>
+      <div>
+        <label for="locationFilter">Location</label>
+        <input id="locationFilter" type="text" placeholder="ex: McHenry">
+      </div>
+    </div>
+
+    <div class="actions">
+      <button id="applyBtn" type="button">Apply Filters</button>
+      <button id="resetBtn" type="button">Clear</button>
+      <button id="scheduleBtn" type="button">Set Schedule</button>
+      <button id="profileBtn" type="button">My Profile</button>
+    </div>
+
+    <div id="status"></div>
+    <div id="results"></div>
+  </div>
+
+  <script src="filters.js"></script>
+</body>
+</html>

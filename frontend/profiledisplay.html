@@ -13,7 +13,7 @@
 </head>
 <body>
     <header>
-        <img id="logo" src="../pictures/lockedResized.png" alt="LockedIn Logo">
+        <img id="logo" src="/pictures/lockedResized.png" alt="LockedIn Logo">
 
 
         <div class="top-buttons">
@@ -23,8 +23,8 @@
 
             <div class="top-right">
                 
-                <a style="position:relative" href="Ember Lu">emberlu@gmail.com</a>
-                <button id="profile"></button>
+                <a style="position:relative" href="profiledisplay.html" id="profile-email-top">-</a>
+                <button id="profile" aria-label="Profile"></button>
 
             </div>
         </div>
@@ -41,12 +41,20 @@
             <div class="row">
               <div class="column">
                 <!-- <h2>Column 1</h2> -->
-<h3>Name: Jane Smith</h3>
-<h3>Email: abcdef@gmail.com</h3>
-<h3>Major: Mathematics</h3>
-<h3>Year: 3</h3>
-<h3>Classes: MATH101 MATH102</h3>
-<h3>Bio: Auditory</h3>
+<h3>Name: <span id="profile-name">-</span></h3>
+<h3>Email: <span id="profile-email">-</span></h3>
+<h3>Major: <span id="profile-major">-</span></h3>
+<h3>Year: <span id="profile-year">-</span></h3>
+<h3>Classes: <span id="profile-classes">-</span></h3>
+<h3>Study Style: <span id="profile-style">-</span></h3>
+<h3>Saved Appointments:</h3>
+<ul id="appointments-list">
+  <li>No appointments yet.</li>
+</ul>
+<h3>Selected Groups:</h3>
+<ul id="selected-groups-list">
+  <li>No selected groups yet.</li>
+</ul>
                 <br>
                 <br>
                 <br>
@@ -56,8 +64,7 @@
                 <!-- <h2>Column 2</h2> -->
                 <img id="profilepic" src="https://www.freeiconspng.com/thumbs/profile-icon-png/profile-icon-9.png" alt="Profile Picture">
                 <div class="container1">
-                    <!-- <button type="button" class="butt" id = "edit">Edit</button> -->
-                    <button type="button" class="butt" id = "logout"><a href="login.html">Logout</a></button>
+                    <button type="button" class="butt" id="logout">Logout</button>
             
                   
             
@@ -84,22 +91,6 @@
 
        
         
-    <script src="profiledisplay.js" ></script>
-    <script>
-        document.getElementById('mygroups').addEventListener('click', () => {
-            window.location.href = 'myGroups.html'; // Redirect to profiledisplay.html in the same tab
-        });
-
-
-        document.getElementById('edit').addEventListener('click', () => {
-            window.location.href = 'newGroup.html'; // Redirect to myGroups.html in the same tab
-        });
-
-        // profile button
-
-        document.getElementById('logout').addEventListener('click', () => {
-            window.location.href = 'logIn.html'; // Redirect to profiledisplay.html in the same tab
-        });
-    </script>
+    <script src="profiledisplay.js"></script>
 </body>
 </html>

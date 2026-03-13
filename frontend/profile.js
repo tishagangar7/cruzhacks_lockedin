@@ -1,8 +1,9 @@
 const userId = new URLSearchParams(window.location.search).get("user_id") || localStorage.getItem("user_id");
+const API_BASE_URL = window.location.origin;
 
 if (!userId) {
   alert("User not found. Please log in again.");
-  window.location.href = "logIn.html";
+  window.location.href = "login.html";
 }
 
 document.getElementById("user_id").value = userId;
@@ -89,9 +90,10 @@ async function submitProfile(e) {
   responseMsg.style.color = "blue";
 
   try {
-    const res = await fetch("http://127.0.0.1:5000/api/profile", {
+    const res = await fetch(`${API_BASE_URL}/api/profile`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
+      credentials: "include",
       body: JSON.stringify(data)
     });
 
@@ -101,8 +103,7 @@ async function submitProfile(e) {
       responseMsg.textContent = result.message;
       responseMsg.style.color = "green";
       setTimeout(() => {
-        localStorage.removeItem("user_id");
-        window.location.href = "logIn.html";
+        window.location.href = "index.html";
       }, 1000);
     } else {
       responseMsg.textContent = result.message;

@@ -1,54 +1,27 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    
-    <title>LockedIn - My Groups</title>
-    <meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
+<html lang="en">
+<head>
+  <title>LockedIn - My Groups</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="myGroups.css">
+</head>
+<body>
+  <header>
+    <img id="logo" src="/pictures/lockedResized.png" alt="LockedIn Logo">
+  </header>
 
-    <!-- link the webpage's stylesheet -->
-    <link rel="stylesheet" href="myGroups.css"  />
+  <main>
+    <h1>My Groups</h1>
+    <div class="actions">
+      <button class="button" type="button" id="creategroupButton">Create Group</button>
+      <button class="button secondary" type="button" id="backToHomeButton">Back Home</button>
+    </div>
 
-    <header>
+    <p id="status"></p>
+    <div id="groupsContainer" class="groups-container"></div>
+  </main>
 
-      <img id = "logo" src = "../pictures/lockedResized.png">
-    </header>
-
-    <header1>
-        <h1>My Groups</h1>
-
-      </header1>
-
-
-      <!-- <button type="add group" class="addgroup">Add Group</button> -->
-
-
-
-    <form action="action_page.php" style="border: black">
-        <div class="container">
-
-        
-        <body>
-            <!-- <div class="button">
-                <a href="newGroup.html" target="_blank">Create Group</a> -->
-            <div>
-                <button class="button" type="button" id="creategroupButton">Create Group</button>
-            </div>
-        </div>
-          <!-- <p>Please fill in this form to create an account.</p> -->
-          <!-- <hr>  -->
-      
-          <!-- <label for="psw-repeat"><b>Repeat Password</b></label>
-          <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
-       -->
-         
-      
-         
-
-      
-       <script src="myGroups.js"></script>
-        </body>
-      </form>
-  </head>
+  <script src="myGroups.js"></script>
+</body>
 </html>

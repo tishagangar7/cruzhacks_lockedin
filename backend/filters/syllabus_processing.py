@@ -3,10 +3,13 @@ import pypdf
 from pdf2image import convert_from_path
 import pytesseract
 import google.generativeai as genai
-from models import db, Keyword
+try:
+    from ..models import db, Keyword
+except ImportError:
+    from models import db, Keyword
 
 # Configure the Generative AI API
-genai.configure(api_key=os.environ.get("GENAI_API_KEY", "AIzaSyCfDWgpd8BNO0LgjaarswjzKK3oFsc02v4"))
+genai.configure(api_key=os.environ.get("GENAI_API_KEY", ""))
 
 # Function to load text files
 def load_text(filepath):

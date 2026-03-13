@@ -1,19 +1,37 @@
 const rejectButton = document.querySelector(".reject")
 const tile = document.querySelector(".tile");
 const acceptButton = document.querySelector(".accept");
+const LOCAL_SWIPE_APPTS_KEY = "swiped_right_appointments";
 
 function reloadText(){
     document.query
 }
 var count = 0;
 
-picsList = ["../tilepics/baskin.jpg", "../tilepics/mchenry.jpg", "../tilepics/mchenry1.jpeg", "../tilepics/sne.jpg", "../tilepics/spaces-mchenry.jpg"]
+picsList = ["/tilepics/baskin.jpg", "/tilepics/mchenry.jpg", "/tilepics/mchenry1.jpeg", "/tilepics/sne.jpg", "/tilepics/spaces-mchenry.jpg"]
 
 classesList = ["CS101", "BIO20", "MATH23", "PHYS2B", "HIST10", "CHEM1A", "STAT5", "PHIL3", "ECON100A"]
 
 places = ["McHenry", "Baskin", "SNE", "Digital Innovation Area", "Cowell Library"]
 
 times = ["Morning", "Afternoon", "Evening", "Night", "Anytime (Open)"]
+
+function saveSwipeAppointment(className, placeName, timeName) {
+    let existing = [];
+    try {
+        existing = JSON.parse(localStorage.getItem(LOCAL_SWIPE_APPTS_KEY) || "[]");
+        if (!Array.isArray(existing)) existing = [];
+    } catch {
+        existing = [];
+    }
+    existing.unshift({
+        class_name: className,
+        location: placeName,
+        time_block: timeName,
+        created_at: new Date().toISOString(),
+    });
+    localStorage.setItem(LOCAL_SWIPE_APPTS_KEY, JSON.stringify(existing));
+}
 
 function createNewTile() {
     const newTile = document.createElement("div");
@@ -29,7 +47,7 @@ function createNewTile() {
         `<div class="tileinfo">
             <div class="tileinfofront">
                 <h2 id="groupname">${className}</h2>
-                <img id="tilepic" src="${tilePic}">
+                <img id="tilepic" src="${tilePic}" alt="Study location">
             </div>
             <div class="tileinfoback">
                 <h1>Info</h1>
@@ -39,8 +57,8 @@ function createNewTile() {
             </div>
         </div>
         <div class="buttons">
-            <button class="reject"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Red_X.svg/2048px-Red_X.svg.png"></button>
-            <button class="accept"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Green_check.svg/600px-Green_check.svg.png"></button>
+            <button class="reject" aria-label="Reject group"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Red_X.svg/2048px-Red_X.svg.png" alt="Reject"></button>
+            <button class="accept" aria-label="Accept group"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Green_check.svg/600px-Green_check.svg.png" alt="Accept"></button>
         </div>
     `;
 
@@ -54,7 +72,7 @@ function createNewTile() {
 
             
         <div id="filtersbox">
-            <button id="filters"><a style="text-decoration: none; color: black;" href="../backend/filters/filters.html">Filters</a></button>
+            <button id="filters" type="button" onclick="window.location.href='filters.html'">Filters</button>
         </div>
     `;
 
@@ -91,6 +109,7 @@ function createNewTile() {
     });
 
     newAcceptButton.addEventListener("click", () => {
+        saveSwipeAppointment(className, placeName, timeName);
         newTile.style.transform = "translateX(300%)";
         newTile.style.transition = "transform 1s ease";
         setTimeout(() => {
@@ -130,6 +149,12 @@ rejectButton.addEventListener("click", () => {
 
 
 acceptButton.addEventListener("click", () => {
+    const className = (document.querySelector(".info h1")?.textContent || "Study Group").replace(" Study Group", "").trim();
+    const locationLine = document.querySelectorAll(".info h3")[1]?.textContent || "";
+    const timeLine = document.querySelectorAll(".info h3")[2]?.textContent || "";
+    const placeName = locationLine.replace("Location:", "").trim() || "Remote";
+    const timeName = timeLine.replace("Time:", "").trim() || "Flexible";
+    saveSwipeAppointment(className, placeName, timeName);
     tile.style.transform = "translateX(300%)";
     tile.style.transition = "transform 1s ease";
     setTimeout(() => {
